@@ -68,9 +68,10 @@ def create_new_member():
     # return some string with a 200 code
     return f'You successfully added {member["first_name"]} {member["last_name"]} to the list.', 200
 
-@app.route('/member<int:member_id>', methods=['DELETE'])
+@app.route('/member/<int:member_id>', methods=['DELETE'])
 def delete_member(member_id):
-    pass
+    members = jackson_family.delete_member(member_id)
+    return jsonify(members), 200
 
 
 
